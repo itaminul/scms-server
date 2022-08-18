@@ -3,7 +3,7 @@ Schema = mongoose.Schema;
 const admissions = new mongoose.Schema({
     _id: Number,
     sessionId: Number,
-    sessions: [{ type: Schema.Types.ObjectId, ref: 'admissiond'}]
+   // sessions: [{ type: Schema.Types.ObjectId, ref: 'admissiond'}]
 })
 
 const sessions = new mongoose.Schema({

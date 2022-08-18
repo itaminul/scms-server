@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
 const admissionSchema = mongoose.Schema({
-    degreeId: {
+    dId: {
         type: String
+    },
+    degreeId: {
+        type: Number
     },
     sessionId: {
         type: Number,
