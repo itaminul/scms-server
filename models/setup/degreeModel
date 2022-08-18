@@ -1,0 +1,25 @@
+const mongooes = require('mongoose')
+const DegreeSchema = mongooes.Schema({
+    degreeId : {
+        type: Number,
+    },
+    degreeName: {
+        type: String,
+        required: true
+    },
+    degreeDescription: {
+        type: String
+    },
+    status: {
+        type: Number,
+        default: 1
+    },
+    createdBy: {
+        type: Number
+    },
+    createdDate: {
+        type: Date
+    }
+})
+const DegreeData = mongooes.model('Degrees', DegreeSchema)
+module.exports = DegreeData;
