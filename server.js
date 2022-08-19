@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 const degreeRouter = require('./routes/setup/degreeRoute')
 const sessoinRoute = require('./routes/setup/sessionRoute')
 const admissionRoute = require('./routes/setup/admissionRoute')
+const authRouter = require('./routes/auth/authRoute')
+const jobRoute = require('./routes/jobRoute')
 const app = express()
 const router = express.Router()
 
@@ -26,6 +28,8 @@ app.get('/', (req,res) => {
     res.send('welcom');
 })
 
+app.use('/api/auth', authRouter)
+app.use('/api/jobs', jobRoute)
 app.use('/api/degree', degreeRouter)
 app.use('/api/sessions', sessoinRoute)
 app.use('/api/admissions', admissionRoute)
