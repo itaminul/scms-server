@@ -1,5 +1,6 @@
 const express=require("express")
 const cors = require('cors')
+require('express-async-errors');
 const bodyParser = require('body-parser')
 const degreeRouter = require('./routes/setup/degreeRoute')
 const sessoinRoute = require('./routes/setup/sessionRoute')

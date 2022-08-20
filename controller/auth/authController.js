@@ -1,13 +1,15 @@
 const User = require('../../models/auth/user')
-exports.register = async(req, res, next) => {
-    try {
+const {StatusCodes} = require('http-status-codes')
+exports.register = async(req, res) => {  
+        const [ name, email, password] = req.body
+
+        if(!name || !email || !password) {
+            throw new Error('Please provide all values')
+        }
+
         const user = await User.create(req.body)
-        res.status(201).json({user})
-    } catch (error) {
-        next(error)
-        //res.status(500).json({ msg: 'There was an error'})
-        
-    }
+        res.status(StatusCodes.OK).json({user})
+
 }
 exports.loign = async(req, res) => {
     res.send('register user')
