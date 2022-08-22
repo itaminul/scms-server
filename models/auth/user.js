@@ -22,7 +22,8 @@ const UserSchems = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Please provide password'],
-        minilength: 6
+        minilength: 6,
+        select: false
 
     },
     lastName: {
@@ -30,6 +31,9 @@ const UserSchems = new mongoose.Schema({
         trim: true,
         maxlength: 20,
         default: 'lastName'
+    },
+    location: {
+        type: String
     }
 
 })
@@ -40,7 +44,7 @@ UserSchems.pre('save', async function() {
 })
 
 UserSchems.methods.createJWT = function() {
-    return jwt.sign({userId:this._id}, 'jwtSecret', {expiresIn: '1d'})
+    return jwt.sign({userId:this._id}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_LIFETIME})
 }
 
 const User = mongoose.model('Users', UserSchems)
