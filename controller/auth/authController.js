@@ -14,7 +14,8 @@ exports.register = async(req, res) => {
         }
 
         const user = await User.create({name, email, password})
-        res.status(StatusCodes.OK).json({user})
+        const token = user.createJWT()
+        res.status(StatusCodes.OK).json({user, token})
 
 }
 exports.loign = async(req, res) => {
@@ -22,5 +23,6 @@ exports.loign = async(req, res) => {
 }
 exports.update = async(req, res) => {
     res.send('register user')
+    User.findOneAndUpdate()
 }
 
